@@ -18,7 +18,13 @@ const Navbar = () => {
   const navbarLinks = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
+<<<<<<< HEAD
     { href: '/servicesII', label: 'Services' },
+=======
+    { href: '/services', label: 'Services' },
+    { href: '/contact', label: 'Contact Us' },
+    { href: '/login', label: 'Login' },
+>>>>>>> 23b511f476e9ab122f4c10bc03cc0587a43e3590
     { href: '#', label: 'Appointment' },
     { href: '/contact', label: 'Contact Us' },
   ];
