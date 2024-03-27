@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
+import Link from "react-scroll";
 import Image from 'next/image';
 
 const Navbar = () => {
@@ -17,9 +18,9 @@ const Navbar = () => {
   const navbarLinks = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
-    { href: '/services', label: 'Services' },
-    { href: '/contact', label: 'Contact Us' },
+    { href: '/servicesII', label: 'Services' },
     { href: '#', label: 'Appointment' },
+    { href: '/contact', label: 'Contact Us' },
   ];
 
   const css = "text-black mx-4 text-xl font-medium hover:border-b-2 hover:border-blue-500 ease-in-out duration-150 hover:font-bold";
@@ -46,6 +47,7 @@ const Navbar = () => {
             <div className="bg-gray-200 mt-2">
               {navbarLinks.map((link, index) => (
                 <a key={index} href={link.href} onClick={closeMenu} className={`block px-4 py-2 ${css}`}>
+                  
                   {link.label}
                 </a>
               ))}
@@ -57,6 +59,7 @@ const Navbar = () => {
         <div className="hidden lg:flex lg:items-center">
           {navbarLinks.map((link, index) => (
             <a key={index} href={link.href} className={css}>
+              
               {link.label}
             </a>
           ))}

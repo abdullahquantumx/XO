@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const Home = () => {
+const Homie = () => {
   const contentVariants = {
     hidden: { x: -80, opacity: 0 },
     show: { x: 0, opacity: 1 },
@@ -41,4 +41,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Homie;

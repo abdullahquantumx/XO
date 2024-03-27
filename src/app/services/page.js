@@ -42,14 +42,32 @@ const labels = ['Pregnancies', 'Glucose', 'BloodPressure', 'Skin Thickness', 'In
     console.log(`Row ${rowId + 1} Button Clicked with input:`, rows[rowId].inputValue);
   };
 
-  const handleSubmitClick = () => {
+  const handleSubmitClick = async () => {
     if (rows.every((row) => row.inputValue.trim() !== '')) {
-      console.log('Array Values:', rows.map((row) => row.inputValue));
-      setSubmitMessage('All inputs are filled. Ready to submit!');
+      try {
+        // Prepare the input data array
+        const inputDataArray = rows.map((row) => parseFloat(row.inputValue));
+  
+        // Make the API call
+        const response = await fetch(`http://localhost:5000/predict?inputData=${inputDataArray.join(',')}`);
+        const data = await response.json();
+  
+        // Check the prediction result
+        if (response.ok) {
+          setSubmitMessage(`Prediction Result: ${data.prediction === 1 ? 'Diabetic' : 'Not Diabetic'}`);
+          console.log(response)
+        } else {
+          setSubmitMessage(`Error: ${data.error}`);
+        }
+      } catch (error) {
+        console.error('Error during API call:', error);
+        setSubmitMessage('Error during API call. Please try again.');
+      }
     } else {
       setSubmitMessage('Please fill in all inputs before submitting.');
     }
   };
+  
 
   return (
     <div className="bg-blue-500 p-8 flex flex-col items-center">
